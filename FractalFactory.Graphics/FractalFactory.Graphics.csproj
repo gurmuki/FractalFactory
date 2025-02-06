@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>FractalFactory.Graphics</RootNamespace>
+    <AssemblyName>FractalFactory.Graphics</AssemblyName>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+	<UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <LangVersion>8.0</LangVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenTK.Core" Version="4.9.3" />
+    <PackageReference Include="OpenTK.Graphics" Version="4.9.3" />
+    <PackageReference Include="OpenTK.Mathematics" Version="4.9.3" />
+    <PackageReference Include="StbImageSharp" Version="2.30.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FractalFactory.Math\FractalFactory.Math.csproj" />
+  </ItemGroup>
+</Project>

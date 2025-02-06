@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+	<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+    <RootNamespace>FractalFactory.Common</RootNamespace>
+    <AssemblyName>FractalFactory.Common</AssemblyName>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+	<UseWindowsForms>true</UseWindowsForms>
+	<Nullable>enable</Nullable>
+    <LangVersion>8.0</LangVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Win32.Registry">
+      <HintPath>..\..\..\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\3.1.32\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

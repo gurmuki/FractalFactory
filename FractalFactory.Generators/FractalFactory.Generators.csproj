@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+	<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+    <RootNamespace>FractalFactory.Generators</RootNamespace>
+    <AssemblyName>FractalFactory.Generators</AssemblyName>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+	<UseWindowsForms>true</UseWindowsForms>
+	<Nullable>enable</Nullable>
+    <LangVersion>8.0</LangVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FractalFactory.Common\FractalFactory.Common.csproj" />
+    <ProjectReference Include="..\FractalFactory.Graphics\FractalFactory.Graphics.csproj" />
+    <ProjectReference Include="..\FractalFactory.Math\FractalFactory.Math.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<RootNamespace>FractalFactory.Math</RootNamespace>
+		<AssemblyName>FractalFactory.Math</AssemblyName>
+		<TargetFramework>net8.0-windows7.0</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Nullable>enable</Nullable>
+		<LangVersion>8.0</LangVersion>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\OpenTK.GLControl\OpenTK.GLControl.csproj" />
+	</ItemGroup>
+
+</Project>
