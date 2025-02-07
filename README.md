@@ -1,5 +1,7 @@
 <h1>Fractal Factory</h1>
-A Windows application for generating 2D fractal images and movies. Simple inputs parametrically describe the fractal. Viewing tools support zoom in/out, window and pan within a generated image. The Newton Raphson method underlies most solutions but an option supports the classic Mandelbrot fractal.
+
+A Windows application for generating 2D fractal images and movies. Simple inputs parametrically describe a [Newton fractal](https://en.wikipedia.org/wiki/Newton_fractal). Viewing tools support zoom in/out, window and pan within a generated image. An option supports the classic [Mandelbrot fractal](https://en.wikipedia.org/wiki/Mandelbrot_set).
+
 <p></p>
 <details>
   <summary>Example images</summary>
