@@ -17,13 +17,8 @@ You can also generate image and movie files (.png/.mp4)
 </details>
 <details>
   <summary>Example movies</summary>
-https://github.com/user-attachments/assets/1408f302-a09c-4bc1-8919-afdcc4436586
-https://github.com/user-attachments/assets/b9cb3f84-05c3-4d91-a8e9-c5a51111f4bd
+  http://www.youtube.com/watch?v=VVgla8-Ar44
+  <p></p>
+  https://www.youtube.com/watch?v=2ILIgy3pZS4
 </details>
-
-[![Watch the video](https://img.youtube.com/vi/_5tFXJQIzi4/0.jpg)](https://www.youtube.com/watch?v=_5tFXJQIzi4)
-
-
-
-
 
