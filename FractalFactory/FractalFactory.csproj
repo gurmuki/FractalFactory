@@ -57,6 +57,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+	<Exec Command="echo Reference: https://learn.microsoft.com/en-us/visualstudio/ide/reference/pre-build-event-post-build-event-command-line-dialog-box#macros &gt; build-macros.txt&#xD;&#xA;echo DevEnvDir: $(DevEnvDir) &gt;&gt; build-macros.txt&#xD;&#xA;echo PlatformName: $(PlatformName) &gt;&gt; build-macros.txt&#xD;&#xA;echo PlatformTarget: $(PlatformTarget) &gt;&gt; build-macros.txt&#xD;&#xA;echo ProjectDir: $(ProjectDir) &gt;&gt; build-macros.txt&#xD;&#xA;echo ProjectName: $(ProjectName) &gt;&gt; build-macros.txt&#xD;&#xA;echo SolutionDir: $(SolutionDir) &gt;&gt; build-macros.txt&#xD;&#xA;echo SolutionName: $(SolutionName) &gt;&gt; build-macros.txt&#xD;&#xA;echo TargetDir: $(TargetDir) &gt;&gt; build-macros.txt&#xD;&#xA;echo TargetName: $(TargetName) &gt;&gt; build-macros.txt&#xD;&#xA;echo ConfigurationName: $(ConfigurationName) &gt;&gt; build-macros.txt&#xD;&#xA;echo xcopy: $(SolutionDir)$(ConfigurationName)\ParserCore.dll $(TargetDir) &gt;&gt; build-macros.txt" />
+  </Target>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="start /B C:\Windows\System32\xcopy.exe /Y &quot;$(SolutionDir)$(Configuration)\ParserCore.dll&quot; &quot;$(TargetDir)&quot;" />
