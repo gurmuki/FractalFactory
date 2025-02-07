@@ -17,8 +17,8 @@ You can also generate image and movie files (.png/.mp4)
 </details>
 <details>
   <summary>Example movies</summary>
-  http://www.youtube.com/watch?v=VVgla8-Ar44
-  <p></p>
-  https://www.youtube.com/watch?v=2ILIgy3pZS4
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There is no way to embed large videos here. Instead, a current set of videos <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;can be found at https://www.youtube.com/@gurmuki/videos
 </details>
 
+<h2>Documentation</h2>
