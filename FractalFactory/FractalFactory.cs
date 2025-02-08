@@ -340,8 +340,6 @@ namespace FractalFactory
             clear.Enabled = false;
             update.Enabled = false;
 
-            singleFrame.Checked = true;
-
             GridInitialize();
 
             appTitle = this.Text;
@@ -707,7 +705,7 @@ namespace FractalFactory
 
         private void numerPoly_Leave(object sender, EventArgs e)
         {
-            if (workspaceSettings.method == OptionsDialog.USER_DEFINED1)
+            if (workspaceSettings.method == OptionsDialog.NEWTON1)
             {
                 PolyTerms terms = Poly.TermsGet(numerPoly.Text, PolyFunction.DERIVATIVE);
                 denomPoly.Text = statementFormatter.FunctionStatementCreate(terms);  // TODO: Use PolyFormatter instead?

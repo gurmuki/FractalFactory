@@ -20,10 +20,9 @@ namespace FractalFactory
 
         private string fractalFactoryFolder = string.Empty;
 
-        public const string HARD_CODED = "Hard-coded";
-        public const string USER_DEFINED1 = "User-defined(1)";
-        public const string USER_DEFINED2 = "User-defined(2)";
-        public const string SECANT_METHOD = "Secant Method";
+        public const string NEWTON1 = "Newton(1)";
+        public const string NEWTON2 = "Newton(2)";
+        public const string SECANT = "Secant";
         public const string MANDELBROT = "Mandelbrot";
 
         public const string STANDARD = "Standard";
@@ -160,10 +159,9 @@ namespace FractalFactory
 
         private void MethodDropdownInit()
         {
-            method.Items.Add(HARD_CODED);
-            method.Items.Add(USER_DEFINED1);
-            method.Items.Add(USER_DEFINED2);
-            method.Items.Add(SECANT_METHOD);
+            method.Items.Add(NEWTON1);
+            method.Items.Add(NEWTON2);
+            method.Items.Add(SECANT);
             method.Items.Add(MANDELBROT);
 
             method.SelectedItem = settings.method;

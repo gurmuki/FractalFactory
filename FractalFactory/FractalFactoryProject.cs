@@ -115,6 +115,8 @@ namespace FractalFactory
             projectID = fractalDb.WorkspaceID;
             projectName = UNNAMED;
 
+            singleFrame.Checked = true;
+
             ProjectStateReflect(true);
         }
 
@@ -141,6 +143,8 @@ namespace FractalFactory
 
                 theCamera = BaseCameraCopy();
                 theDomain = DomainFromInputs();
+
+                generate.Enabled = true;
             }
 
             AppTitleUpdate();

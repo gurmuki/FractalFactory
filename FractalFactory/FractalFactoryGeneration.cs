@@ -21,11 +21,9 @@ namespace FractalFactory
             isTaskRunning = false;
             Debug.WriteLine("Overall excution time: {0}\n", DateTime.Now - overallStart);
 
-            if (workspaceSettings.method == OptionsDialog.HARD_CODED)
-                run.Enabled = IsDomainDefined();
-            else if (workspaceSettings.method == OptionsDialog.USER_DEFINED1)
+            if (workspaceSettings.method == OptionsDialog.NEWTON1)
                 run.Enabled = (IsDomainDefined() && NonEmpty(numerPoly));
-            else if (workspaceSettings.method == OptionsDialog.USER_DEFINED2)
+            else if (workspaceSettings.method == OptionsDialog.NEWTON2)
                 run.Enabled = (IsDomainDefined() && NonEmpty(numerPoly) && NonEmpty(denomPoly));
 
             stop.Enabled = false;
@@ -91,13 +89,12 @@ namespace FractalFactory
             FractalGenerator? generator = null;
 
             // In order of likelyhood.
-            if ((workspaceSettings.method == OptionsDialog.USER_DEFINED2)
-                || (workspaceSettings.method == OptionsDialog.USER_DEFINED1)
-                || (workspaceSettings.method == OptionsDialog.HARD_CODED))
+            if ((workspaceSettings.method == OptionsDialog.NEWTON2)
+                || (workspaceSettings.method == OptionsDialog.NEWTON1))
             {
                 generator = new NewtonRaphsonGenerator();
             }
-            else if (workspaceSettings.method == OptionsDialog.SECANT_METHOD)
+            else if (workspaceSettings.method == OptionsDialog.SECANT)
             {
                 generator = new SecantGenerator();
             }
@@ -147,7 +144,7 @@ namespace FractalFactory
             FractalGenerator generator = GeneratorCreate();
 
             generator.NumeratorPoly(Poly.TermsGet(numerPoly.Text, PolyFunction.VERBATIM));
-            if (workspaceSettings.method == OptionsDialog.USER_DEFINED2)
+            if (workspaceSettings.method == OptionsDialog.NEWTON2)
                 generator.DenominatorPoly(Poly.TermsGet(denomPoly.Text, PolyFunction.VERBATIM));
 
             cancelTokenSource = new CancellationTokenSource();

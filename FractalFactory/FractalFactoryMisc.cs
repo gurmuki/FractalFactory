@@ -32,10 +32,7 @@ namespace FractalFactory
             denomLabel.Enabled = false;
             denomPoly.Enabled = false;
 
-            if (workspaceSettings.method == OptionsDialog.HARD_CODED)
-                numerPoly.Text = "x^3 - 1";
-
-            if ((workspaceSettings.method == OptionsDialog.USER_DEFINED1) || (workspaceSettings.method == OptionsDialog.HARD_CODED))
+            if ((workspaceSettings.method == OptionsDialog.NEWTON1))
             {
                 PolyTerms numerTerms = Poly.TermsGet(numerPoly.Text, PolyFunction.VERBATIM);
                 if (numerTerms.Count > 0)
@@ -53,7 +50,7 @@ namespace FractalFactory
                 numerPoly.Enabled = true;
                 denomPoly.Enabled = false;
             }
-            else if (workspaceSettings.method == OptionsDialog.USER_DEFINED2)
+            else if (workspaceSettings.method == OptionsDialog.NEWTON2)
             {
                 numerLabel.Enabled = true;
                 numerPoly.Enabled = true;
@@ -61,7 +58,7 @@ namespace FractalFactory
                 denomLabel.Enabled = true;
                 denomPoly.Enabled = true;
             }
-            else if (workspaceSettings.method == OptionsDialog.SECANT_METHOD)
+            else if (workspaceSettings.method == OptionsDialog.SECANT)
             {
                 numerLabel.Enabled = true;
                 numerPoly.Enabled = true;
@@ -560,14 +557,14 @@ namespace FractalFactory
             {
                 numerPoly.Text = PolyFormatter.Format(frame.FX);
 
-                if (workspaceSettings.method == OptionsDialog.USER_DEFINED1)
+                if (workspaceSettings.method == OptionsDialog.NEWTON1)
                 {
                     PolyTerms terms = Poly.TermsGet(numerPoly.Text, PolyFunction.DERIVATIVE);
                     denomPoly.Text = statementFormatter.FunctionStatementCreate(terms);  // TODO: Use PolyFormatter instead?
                 }
             }
 
-            if ((workspaceSettings.method == OptionsDialog.USER_DEFINED2) && (frame.DFX != string.Empty))
+            if ((workspaceSettings.method == OptionsDialog.NEWTON2) && (frame.DFX != string.Empty))
                 denomPoly.Text = PolyFormatter.Format(frame.DFX);
 
             if (includeDomain && frame.Domain.IsValid())
@@ -605,14 +602,14 @@ namespace FractalFactory
                 numerPoly.Text = PolyFormatter.Format(sp.Value(Stringy.NUMER));
                 ++count;
 
-                if (workspaceSettings.method == OptionsDialog.USER_DEFINED1)
+                if (workspaceSettings.method == OptionsDialog.NEWTON1)
                 {
                     PolyTerms terms = Poly.TermsGet(numerPoly.Text, PolyFunction.DERIVATIVE);
                     denomPoly.Text = statementFormatter.FunctionStatementCreate(terms);  // TODO: Use PolyFormatter instead?
                 }
             }
 
-            if (sp.HasA(Stringy.DENOM) && (workspaceSettings.method == OptionsDialog.USER_DEFINED2))
+            if (sp.HasA(Stringy.DENOM) && (workspaceSettings.method == OptionsDialog.NEWTON2))
             {
                 denomPoly.Text = PolyFormatter.Format(sp.Value(Stringy.DENOM));
                 ++count;

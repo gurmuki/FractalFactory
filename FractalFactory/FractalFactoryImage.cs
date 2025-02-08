@@ -98,7 +98,7 @@ namespace FractalFactory
             FractalGenerator generator = GeneratorCreate();
 
             generator.NumeratorPoly(Poly.TermsGet(numerPoly.Text, PolyFunction.VERBATIM));
-            if (workspaceSettings.method == OptionsDialog.USER_DEFINED2)
+            if (workspaceSettings.method == OptionsDialog.NEWTON2)
                 generator.DenominatorPoly(Poly.TermsGet(denomPoly.Text, PolyFunction.VERBATIM));
 
             cancelTokenSource = new CancellationTokenSource();

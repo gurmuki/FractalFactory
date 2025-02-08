@@ -94,7 +94,7 @@ namespace FractalFactory
             defaultSettings.projPath = string.Empty;
             defaultSettings.movieFolder = string.Empty;
 
-            defaultSettings.method = OptionsDialog.USER_DEFINED2;
+            defaultSettings.method = OptionsDialog.NEWTON2;
 
             defaultSettings.DefaultParametersSet();
 
