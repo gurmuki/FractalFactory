@@ -406,6 +406,11 @@ namespace FractalFactory
             Debug.Assert(rowNumber >= 0);
 
             fractalDb.WorkspaceRecordNew(statement, rowNumber);
+            if (imagePending)
+            {
+                fractalDb.WorkspaceImageUpdate(rowNumber, theBitmap);
+                imagePending = false;
+            }
         }
 
         /// <summary>Updates the indicated grid statement and its associated database image.</summary>
@@ -472,6 +477,14 @@ namespace FractalFactory
 
         private void BitmapShowByRowNumber(int rowNumber)
         {
+            // ASSUMPTION: The Generate and Record buttons were clicked, so there is an
+            // image pending commit to the database. However, inserting a new statement
+            // causes the grid active row to change. Sans the following intervention the
+            // pending image will be lost and and the wrong image (if any) will be saved
+            // with the newly recorded statement.
+            if (imagePending)
+                return;
+
             if (fractalDb.WorkspaceImageAt(rowNumber, theBitmap))
             {
                 texture.Update();

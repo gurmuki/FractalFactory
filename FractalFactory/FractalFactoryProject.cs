@@ -118,6 +118,7 @@ namespace FractalFactory
             singleFrame.Checked = true;
 
             ProjectStateReflect(true);
+            imagePending = false;
         }
 
         private void ProjectStateReflect(bool gridPopulate)

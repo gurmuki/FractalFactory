@@ -239,6 +239,10 @@ namespace FractalFactory
         private CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
         private CancellationToken cancelToken;
 
+        // Upon selecting the Generate button, imagePending is set to true,
+        // helping to ensure the correct image is saved with a recorded statement.
+        private bool imagePending = false;
+
         private bool initializingControlPanel;
         private const float MINIMUM_TIME = 3;
 

@@ -41,6 +41,7 @@ namespace FractalFactory
             }
 
             SingleBitmapGenerate();
+            imagePending = true;
 
             zoomPtLocked = false;
 
