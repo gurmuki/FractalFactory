@@ -408,8 +408,13 @@ namespace FractalFactory
             fractalDb.WorkspaceRecordNew(statement, rowNumber);
             if (imagePending)
             {
+                // The Generate button was used to generate a new image.
                 fractalDb.WorkspaceImageUpdate(rowNumber, theBitmap);
                 imagePending = false;
+            }
+            else
+            {
+                ImageClear();
             }
         }
 

@@ -380,6 +380,7 @@ namespace FractalFactory
             ymax.Name = "ymax";
             ymax.Size = new System.Drawing.Size(74, 20);
             ymax.TabIndex = 5;
+            ymax.TextChanged += ymax_TextChanged;
             ymax.KeyPress += ymax_KeyPress;
             // 
             // ymin
@@ -388,6 +389,7 @@ namespace FractalFactory
             ymin.Name = "ymin";
             ymin.Size = new System.Drawing.Size(74, 20);
             ymin.TabIndex = 4;
+            ymin.TextChanged += ymin_TextChanged;
             ymin.KeyPress += ymin_KeyPress;
             // 
             // xmax
@@ -396,6 +398,7 @@ namespace FractalFactory
             xmax.Name = "xmax";
             xmax.Size = new System.Drawing.Size(74, 20);
             xmax.TabIndex = 3;
+            xmax.TextChanged += xmax_TextChanged;
             xmax.KeyPress += xmax_KeyPress;
             // 
             // xmin
@@ -404,6 +407,7 @@ namespace FractalFactory
             xmin.Name = "xmin";
             xmin.Size = new System.Drawing.Size(74, 20);
             xmin.TabIndex = 2;
+            xmin.TextChanged += xmin_TextChanged;
             xmin.KeyPress += xmin_KeyPress;
             // 
             // time
@@ -453,6 +457,7 @@ namespace FractalFactory
             denomPoly.Name = "denomPoly";
             denomPoly.Size = new System.Drawing.Size(143, 20);
             denomPoly.TabIndex = 1;
+            denomPoly.TextChanged += denomPoly_TextChanged;
             // 
             // numerPoly
             // 
@@ -460,6 +465,7 @@ namespace FractalFactory
             numerPoly.Name = "numerPoly";
             numerPoly.Size = new System.Drawing.Size(143, 20);
             numerPoly.TabIndex = 0;
+            numerPoly.TextChanged += numerPoly_TextChanged;
             numerPoly.Leave += numerPoly_Leave;
             // 
             // exeGroupBox
@@ -668,6 +674,7 @@ namespace FractalFactory
             grid.CellEndEdit += grid_CellEndEdit;
             grid.CellValidating += grid_CellValidating;
             grid.SelectionChanged += grid_SelectionChanged;
+            grid.MouseDown += grid_MouseDown;
             grid.MouseUp += grid_MouseUp;
             grid.PreviewKeyDown += grid_PreviewKeyDown;
             // 

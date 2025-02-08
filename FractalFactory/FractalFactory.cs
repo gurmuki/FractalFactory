@@ -647,18 +647,12 @@ namespace FractalFactory
 
         private void singleFrame_CheckedChanged(object sender, EventArgs e)
         {
-            stop.Enabled = false;
+            // To enable the Generate button ,force the user to
+            // re-establish input control parameters.
+            generate.Enabled = false;
 
-            if (singleFrame.Checked)
-            {
-                generate.Enabled = true;
-                run.Enabled = false;
-            }
-            else
-            {
-                run.Enabled = true;
-                generate.Enabled = false;
-            }
+            run.Enabled = !singleFrame.Checked;
+            stop.Enabled = false;
         }
 
         private void Copy_Click(object sender, EventArgs e)
@@ -706,6 +700,13 @@ namespace FractalFactory
         {
             e.Handled = !KeyValidator.IsFloatingPointInput(e.KeyChar);
         }
+
+        private void numerPoly_TextChanged(object sender, EventArgs e) { PendingUpdate(); }
+        private void denomPoly_TextChanged(object sender, EventArgs e) { PendingUpdate(); }
+        private void xmin_TextChanged(object sender, EventArgs e) { PendingUpdate(); }
+        private void xmax_TextChanged(object sender, EventArgs e) { PendingUpdate(); }
+        private void ymin_TextChanged(object sender, EventArgs e) { PendingUpdate(); }
+        private void ymax_TextChanged(object sender, EventArgs e) { PendingUpdate(); }
 
         private void numerPoly_Leave(object sender, EventArgs e)
         {
@@ -836,6 +837,11 @@ namespace FractalFactory
             return Single.Parse(fmt);
         }
 
+        private void grid_MouseDown(object sender, MouseEventArgs e)
+        {
+            imagePending = false;
+        }
+
         // Prior to introducing grid_SelectionChanged (and this problem frequently
         // occurred), if you wern't paying attention when you clicked the Generate
         // button, the generated fractal didn't correspond to the selected statement
@@ -928,6 +934,7 @@ namespace FractalFactory
                 if (rowNumber < 0)
                     return;
 
+                imagePending = false;
                 BitmapShowByRowNumber(rowNumber);
                 clear.Enabled = HaveSelectedImages();
             }
@@ -938,6 +945,7 @@ namespace FractalFactory
                 if (rowNumber >= grid.RowCount)
                     return;
 
+                imagePending = false;
                 BitmapShowByRowNumber(rowNumber);
                 clear.Enabled = HaveSelectedImages();
             }
@@ -980,6 +988,13 @@ namespace FractalFactory
                 e.Cancel = true;
 
             // TODO: Ideally, prettify the statement (FormattedValue?) before allowing it to be displayed.
+        }
+
+        private void PendingUpdate()
+        {
+            // generatePending = true;
+            generate.Enabled = true;
+            imagePending = false;
         }
 
         private void Log(string message)
