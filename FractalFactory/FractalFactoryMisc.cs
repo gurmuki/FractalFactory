@@ -426,7 +426,14 @@ namespace FractalFactory
             grid.StatementUpdate(rowNumber, statement);
 
             if (fractalDb.WorkspaceStatementUpdate(rowNumber, statement))
-                fractalDb.WorkspaceImageUpdate(rowNumber, theBitmap);
+            {
+                if (imagePending)
+                {
+                    // The Generate button was used to generate a new image.
+                    fractalDb.WorkspaceImageUpdate(rowNumber, theBitmap);
+                    imagePending = false;
+                }
+            }
         }
 
         private bool ConditionalInterpolationEnable()
@@ -768,7 +775,6 @@ namespace FractalFactory
                     if (numerInterpolator != null)
                     {
                         PolyTerms terms = numerInterpolator.Interpolate(indx);
-                        sb.Append(" ");
                         sb.Append(statementFormatter.FunctionStatementCreate(Stringy.NUMER, terms));
                     }
 

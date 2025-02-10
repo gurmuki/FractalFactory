@@ -55,6 +55,9 @@ namespace FractalFactory
             numerGrid.Visible = ((Numer0 != null) && (NumerN != null) && !Numer0.EqualTo(NumerN, Precision));
             denomGrid.Visible = ((Denom0 != null) && (DenomN != null) && !Denom0.EqualTo(DenomN, Precision));
 
+            numerLabel.Visible = numerGrid.Visible;
+            denomLabel.Visible = denomGrid.Visible;
+
             int DELTAY = 32;
             int top = DELTAY;
             if (numerGrid.Visible)
@@ -77,6 +80,8 @@ namespace FractalFactory
 
                 if (!numerGrid.Visible)
                     denomGrid.Location = numerGrid.Location;
+
+                denomLabel.Location = denomGrid.Location - new Size(0, denomLabel.Size.Height);
             }
 
             top = denomGrid.Bottom + DELTAY;
