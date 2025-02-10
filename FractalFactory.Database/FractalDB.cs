@@ -36,7 +36,7 @@ namespace FractalFactory.Database
             "DirectoryID INT," +
             "Json VARCHAR(255) NOT NULL);";
 
-        private const string WORKSPACE_TABLE_CREATE = "CREATE TABLE IF NOT EXISTS {0} (" +
+        private const string PROJECT_TABLE_CREATE = "CREATE TABLE IF NOT EXISTS {0} (" +
             "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
             "DirectoryID INT," +
             "RowNum INT," +
@@ -407,7 +407,7 @@ namespace FractalFactory.Database
             string sqlStatment = $"DROP TABLE IF EXISTS {WORKSPACE}";
             NonQueryExecute(sqlStatment);
 
-            sqlStatment = string.Format(WORKSPACE_TABLE_CREATE, WORKSPACE);
+            sqlStatment = string.Format(PROJECT_TABLE_CREATE, WORKSPACE);
             NonQueryExecute(sqlStatment);
 
             TransactionEnd();
@@ -493,9 +493,19 @@ namespace FractalFactory.Database
             if (TableExists(CLONE))
                 throw new Exception($"A {CLONE} table exists (indicating an earlier error).");
 
+            //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
             // Clone the workspace.
-            if (!NonQueryExecute($"CREATE TABLE {CLONE} AS SELECT * FROM {WORKSPACE}"))
+            // Whatever the reason, the SQLite statement: CREATE TABLE _CLONE_ AS SELECT * FROM _WORKSPACE_
+            // failed to carry forward the schema directive: ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT
+            // causing problems downstream. So now a two-step solution is used.
+            //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+            string sqlStatment = string.Format(PROJECT_TABLE_CREATE, CLONE);
+            if (!NonQueryExecute(sqlStatment))
+                throw new Exception($"Failed to create the {CLONE} table.");
+
+            if (!NonQueryExecute($"INSERT INTO {CLONE} (ID, DirectoryID, RowNum, Text, Valid, Image) SELECT * FROM {WORKSPACE}"))
                 throw new Exception($"Failed to clone {WORKSPACE}.");
+            //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
             // Drop any existing table.
             if (!NonQueryExecute($"DROP TABLE IF EXISTS '{projectName}'"))
@@ -920,7 +930,7 @@ namespace FractalFactory.Database
                 NonQueryExecute(DIRECTORY_TABLE_CREATE);
                 NonQueryExecute(SETTINGS_TABLE_CREATE);
 
-                string sqlStatment = string.Format(WORKSPACE_TABLE_CREATE, WORKSPACE);
+                string sqlStatment = string.Format(PROJECT_TABLE_CREATE, WORKSPACE);
                 NonQueryExecute(sqlStatment);
 
                 TransactionEnd();
