@@ -23,7 +23,7 @@ namespace FractalFactory
             set { settings.Copy(value); }
         }
 
-        public string MovieName { get; set; }
+        public string MovieName { get; set; } = string.Empty;
 
         public bool ProcessShow { get; set; } = false;
 
