@@ -433,9 +433,19 @@ namespace FractalFactory.Database
 
             NonQueryExecute($"DROP TABLE {WORKSPACE}");
 
-            // Clone the project into the workspace.
-            if (!NonQueryExecute($"CREATE TABLE {WORKSPACE} AS SELECT * FROM '{projectName}'"))
-                throw new Exception($"Failed to clone the project {projectName} into {WORKSPACE}.");
+            //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+            // Create the workspace as a clone of the selected project.
+            // Whatever the reason, the SQLite statement: CREATE TABLE _WORKSPACE_ AS SELECT * FROM {project}
+            // failed to carry forward the schema directive: ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT
+            // causing problems downstream. So now a two-step solution is used.
+            //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+            string sqlStatment = string.Format(PROJECT_TABLE_CREATE, WORKSPACE);
+            if (!NonQueryExecute(sqlStatment))
+                throw new Exception($"Failed to create the {WORKSPACE} table.");
+
+            if (!NonQueryExecute($"INSERT INTO {WORKSPACE} (ID, DirectoryID, RowNum, Text, Valid, Image) SELECT * FROM '{projectName}'"))
+                throw new Exception($"Failed to clone '{projectName}'.");
+            //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
             return projectID;
         }
