@@ -77,6 +77,8 @@ namespace FractalFactory
         {
             ProjectMovieDialog dialog = new ProjectMovieDialog(projectMenu, 20);
             dialog.Settings = workspaceSettings;
+            dialog.MovieName = (Stringy.IsEmpty(workspaceSettings.movieName)
+                ? $"{projectName}.mp4" : workspaceSettings.movieName);
 
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;

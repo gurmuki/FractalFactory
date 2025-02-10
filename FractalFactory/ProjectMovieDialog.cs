@@ -23,12 +23,14 @@ namespace FractalFactory
             set { settings.Copy(value); }
         }
 
+        public string MovieName { get; set; }
+
         public bool ProcessShow { get; set; } = false;
 
         private void ProjectMovieDialog_Load(object sender, EventArgs e)
         {
             string folder = (Stringy.IsEmpty(settings.movieFolder) ? settings.defMovFolder : settings.movieFolder);
-            movie.Text = Path.Combine(folder, settings.movieName);
+            movie.Text = Path.Combine(folder, MovieName);
             watermarkPath.Text = settings.movieWater;
             frameRate.Text = settings.movieRate.ToString();
 
