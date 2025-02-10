@@ -30,12 +30,14 @@
         {
             numerGrid = new System.Windows.Forms.DataGridView();
             denomGrid = new System.Windows.Forms.DataGridView();
-            cancel = new System.Windows.Forms.Button();
-            ok = new System.Windows.Forms.Button();
             numerLabel = new System.Windows.Forms.Label();
             denomLabel = new System.Windows.Forms.Label();
+            buttonPanel = new System.Windows.Forms.Panel();
+            ok = new System.Windows.Forms.Button();
+            cancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)numerGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)denomGrid).BeginInit();
+            buttonPanel.SuspendLayout();
             SuspendLayout();
             // 
             // numerGrid
@@ -67,29 +69,6 @@
             denomGrid.TabIndex = 1;
             denomGrid.SelectionChanged += dfxGrid_SelectionChanged;
             // 
-            // cancel
-            // 
-            cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            cancel.Location = new System.Drawing.Point(151, 332);
-            cancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            cancel.Name = "cancel";
-            cancel.Size = new System.Drawing.Size(88, 27);
-            cancel.TabIndex = 2;
-            cancel.Text = "Cancel";
-            cancel.UseVisualStyleBackColor = true;
-            // 
-            // ok
-            // 
-            ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            ok.Location = new System.Drawing.Point(246, 332);
-            ok.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            ok.Name = "ok";
-            ok.Size = new System.Drawing.Size(88, 27);
-            ok.TabIndex = 3;
-            ok.Text = "Accept";
-            ok.UseVisualStyleBackColor = true;
-            ok.Click += ok_Click;
-            // 
             // numerLabel
             // 
             numerLabel.AutoSize = true;
@@ -108,17 +87,47 @@
             denomLabel.TabIndex = 5;
             denomLabel.Text = "Denominator";
             // 
+            // buttonPanel
+            // 
+            buttonPanel.Controls.Add(ok);
+            buttonPanel.Controls.Add(cancel);
+            buttonPanel.Location = new System.Drawing.Point(148, 318);
+            buttonPanel.Name = "buttonPanel";
+            buttonPanel.Size = new System.Drawing.Size(186, 34);
+            buttonPanel.TabIndex = 6;
+            // 
+            // ok
+            // 
+            ok.DialogResult = System.Windows.Forms.DialogResult.OK;
+            ok.Location = new System.Drawing.Point(97, 4);
+            ok.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ok.Name = "ok";
+            ok.Size = new System.Drawing.Size(88, 27);
+            ok.TabIndex = 5;
+            ok.Text = "Accept";
+            ok.UseVisualStyleBackColor = true;
+            // 
+            // cancel
+            // 
+            cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            cancel.Location = new System.Drawing.Point(2, 4);
+            cancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            cancel.Name = "cancel";
+            cancel.Size = new System.Drawing.Size(88, 27);
+            cancel.TabIndex = 4;
+            cancel.Text = "Cancel";
+            cancel.UseVisualStyleBackColor = true;
+            // 
             // InterpolationSetupDialog
             // 
             AcceptButton = ok;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = cancel;
-            ClientSize = new System.Drawing.Size(349, 370);
+            ClientSize = new System.Drawing.Size(349, 360);
+            Controls.Add(buttonPanel);
             Controls.Add(denomLabel);
             Controls.Add(numerLabel);
-            Controls.Add(ok);
-            Controls.Add(cancel);
             Controls.Add(denomGrid);
             Controls.Add(numerGrid);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -129,6 +138,7 @@
             Load += InterpolationSetup_Load;
             ((System.ComponentModel.ISupportInitialize)numerGrid).EndInit();
             ((System.ComponentModel.ISupportInitialize)denomGrid).EndInit();
+            buttonPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -137,9 +147,10 @@
 
         private System.Windows.Forms.DataGridView numerGrid;
         private System.Windows.Forms.DataGridView denomGrid;
-        private System.Windows.Forms.Button cancel;
-        private System.Windows.Forms.Button ok;
         private System.Windows.Forms.Label numerLabel;
         private System.Windows.Forms.Label denomLabel;
+        private System.Windows.Forms.Panel buttonPanel;
+        private System.Windows.Forms.Button ok;
+        private System.Windows.Forms.Button cancel;
     }
 }

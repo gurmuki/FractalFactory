@@ -831,10 +831,10 @@ namespace FractalFactory
             return prec;
         }
 
-        private float PrecisionAsFloat()
+        private double PrecisionAsDouble()
         {
             string fmt = "0." + new string('0', PrecisionAsInt() - 1) + "1";
-            return Single.Parse(fmt);
+            return Double.Parse(fmt);
         }
 
         private void grid_MouseDown(object sender, MouseEventArgs e)

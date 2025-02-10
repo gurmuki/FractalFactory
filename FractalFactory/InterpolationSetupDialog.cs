@@ -1,6 +1,7 @@
 ﻿using FractalFactory.Math;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace FractalFactory
         private PolyTerms? NumerN { set; get; } = null;
         private PolyTerms? Denom0 { set; get; } = null;
         private PolyTerms? DenomN { set; get; } = null;
-        private double Precision { set; get; } = 0;
+        private double precision = 0;
 
         public InterpolationSetupDialog(Control control, int offset)
         {
@@ -21,16 +22,17 @@ namespace FractalFactory
             FormLocator.Locate(this, control, offset);
         }
 
+        public int Precision { set; get; } = 0;
+
         public List<InterpolationDirective> NumerDirectives { get; private set; } = new List<InterpolationDirective>();
         public List<InterpolationDirective> DenomDirectives { get; private set; } = new List<InterpolationDirective>();
 
-        public bool PolynomialsInit(PolyTerms? numer0, PolyTerms? numerN, PolyTerms? denom0, PolyTerms? denomN, double precision)
+        public bool PolynomialsInit(PolyTerms? numer0, PolyTerms? numerN, PolyTerms? denom0, PolyTerms? denomN)
         {
             Numer0 = numer0!;
             NumerN = numerN!;
             Denom0 = denom0!;
             DenomN = denomN!;
-            Precision = precision;
 
             if ((numer0 != null) && (numerN == null))
                 return false;
@@ -49,6 +51,19 @@ namespace FractalFactory
 
         private void InterpolationSetup_Load(object sender, EventArgs e)
         {
+            Debug.Assert(Precision > 0);
+
+            //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+            string fmt = "0." + new string('0', Precision - 1) + "1";
+            precision = Double.Parse(fmt);
+
+            // As we cannot use CreateGraphics() in a class library, so the fake image is used to load the Graphics.
+            Image fakeImage = new Bitmap(1, 1);
+            System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(fakeImage);
+            string exemplarCellText = string.Format("-00.{0}", new string('0', Precision));
+            int cellWidth = 2 * (int)graphics.MeasureString(exemplarCellText, numerGrid.Font).Width;
+            //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
             GridStylingInit(numerGrid);
             GridStylingInit(denomGrid);
 
@@ -58,37 +73,69 @@ namespace FractalFactory
             numerLabel.Visible = numerGrid.Visible;
             denomLabel.Visible = denomGrid.Visible;
 
-            int DELTAY = 32;
+            int numerWidth = 0;
+            if (numerGrid.Visible)
+            {
+                int count = ((Numer0!.Count > NumerN!.Count) ? Numer0.Count : NumerN.Count);
+                numerWidth = count * cellWidth;
+            }
+
+            int denomWidth = 0;
+            if (denomGrid.Visible)
+            {
+                int count = ((Denom0!.Count > DenomN!.Count) ? Denom0.Count : DenomN.Count);
+                denomWidth = count * cellWidth;
+            }
+
+            int padding = numerGrid.Left;
+            int minWidth = buttonPanel.Width;
+            int bestWidth = ((numerWidth > denomWidth) ? numerWidth : denomWidth);
+            if (bestWidth < minWidth)
+                bestWidth = minWidth;
+
+            int DELTAY = 16;
             int top = DELTAY;
             if (numerGrid.Visible)
             {
+                numerGrid.Width = bestWidth;
+
                 GridRowAdd(numerGrid, Numer0!, true);
                 GridRowAdd(numerGrid, NumerN!, true);
                 GridRowAdd(numerGrid, Numer0!, false);
                 GridRowAdd(numerGrid, NumerN!, false);
 
                 if (!denomGrid.Visible)
-                    denomGrid.Location = numerGrid.Location;
+                {
+                    top = numerGrid.Bottom + DELTAY;
+                    buttonPanel.Location = new Point(numerGrid.Right - buttonPanel.Width, top);
+                    this.Size = new Size(bestWidth + (3 * padding), top + (int)(3 * DELTAY) + buttonPanel.Height);
+                    return;
+                }
             }
 
             if (denomGrid.Visible)
             {
+                if (numerGrid.Visible)
+                {
+
+                }
+                else
+                {
+                    denomGrid.Location = numerGrid.Location;
+                }
+
+                denomLabel.Location = denomGrid.Location - new Size(0, denomLabel.Size.Height);
+                denomGrid.Width = bestWidth;
+
                 GridRowAdd(denomGrid, Denom0!, true);
                 GridRowAdd(denomGrid, DenomN!, true);
                 GridRowAdd(denomGrid, Denom0!, false);
                 GridRowAdd(denomGrid, DenomN!, false);
 
-                if (!numerGrid.Visible)
-                    denomGrid.Location = numerGrid.Location;
-
-                denomLabel.Location = denomGrid.Location - new Size(0, denomLabel.Size.Height);
+                top = denomGrid.Bottom + DELTAY;
+                buttonPanel.Location = new Point(denomGrid.Right - buttonPanel.Width, top);
+                this.Size = new Size(bestWidth + (3 * padding), top + (int)(3 * DELTAY) + buttonPanel.Height);
             }
-
-            top = denomGrid.Bottom + DELTAY;
-            cancel.Top = top;
-            ok.Top = top;
-
-            this.Size = new Size(this.Width, top + (int)(2.5 * DELTAY));
         }
 
         private void ok_Click(object sender, EventArgs e)

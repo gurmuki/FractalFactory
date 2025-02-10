@@ -721,25 +721,25 @@ namespace FractalFactory
                 PolyTerms.Balance(DFx0, DFxN);
             }
 
+            double prec = PrecisionAsDouble();
+
             if (haveDomain)
             {
                 Domain i = statementProcessor.Domains[0];
                 Domain f = statementProcessor.Domains[1];
 
-                if (!i.EqualTo(f, PrecisionAsFloat()))
+                if (!i.EqualTo(f, prec))
                     domainInterpolator = new DomainInterpolator(i, f, divisions);
             }
-
-            string tmp = string.Format("1e-{0}", PrecisionAsInt());
-            double prec = 1e-10;
-            double.TryParse(tmp, out prec);
 
             if (CanProcess(Fx0, FxN, prec) || CanProcess(DFx0, DFxN, prec))
             {
                 if (interactive)
                 {
                     InterpolationSetupDialog dialog = new InterpolationSetupDialog(grid, 20);
-                    dialog.PolynomialsInit(Fx0, FxN, DFx0, DFxN, prec);
+                    dialog.Precision = PrecisionAsInt();
+                    dialog.PolynomialsInit(Fx0, FxN, DFx0, DFxN);
+
                     if (dialog.ShowDialog() == DialogResult.Cancel)
                         return false;
 
