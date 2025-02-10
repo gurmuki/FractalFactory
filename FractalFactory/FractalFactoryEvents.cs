@@ -277,7 +277,7 @@ namespace FractalFactory
                     e.Handled = (grid.EditingControl == null);  // ASSUMPTION: Was handled by the grid control
                 }
             }
-            else
+            else if (grid.EditingControl == null)
             {
                 Keys keyCode = (Keys)(Char.IsLetter(e.KeyChar) ? Char.ToUpper(e.KeyChar) : e.KeyChar);
                 PreviewKeyEvent(keyCode);
