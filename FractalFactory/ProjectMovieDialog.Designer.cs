@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             pathsGroupBox = new System.Windows.Forms.GroupBox();
+            watermark = new System.Windows.Forms.CheckBox();
             moviePath = new System.Windows.Forms.Label();
             movie = new System.Windows.Forms.TextBox();
             browse = new System.Windows.Forms.Button();
-            watermarkLBL = new System.Windows.Forms.Label();
             watermarkPath = new System.Windows.Forms.TextBox();
             frameRate = new System.Windows.Forms.TextBox();
             frameRateLBL = new System.Windows.Forms.Label();
@@ -44,10 +44,10 @@
             // 
             // pathsGroupBox
             // 
+            pathsGroupBox.Controls.Add(watermark);
             pathsGroupBox.Controls.Add(moviePath);
             pathsGroupBox.Controls.Add(movie);
             pathsGroupBox.Controls.Add(browse);
-            pathsGroupBox.Controls.Add(watermarkLBL);
             pathsGroupBox.Controls.Add(watermarkPath);
             pathsGroupBox.Location = new System.Drawing.Point(12, 12);
             pathsGroupBox.Name = "pathsGroupBox";
@@ -55,6 +55,17 @@
             pathsGroupBox.TabIndex = 1;
             pathsGroupBox.TabStop = false;
             pathsGroupBox.Text = "Paths";
+            // 
+            // watermark
+            // 
+            watermark.AutoSize = true;
+            watermark.Location = new System.Drawing.Point(6, 53);
+            watermark.Name = "watermark";
+            watermark.Size = new System.Drawing.Size(84, 19);
+            watermark.TabIndex = 9;
+            watermark.Text = "Watermark";
+            watermark.UseVisualStyleBackColor = true;
+            watermark.CheckedChanged += watermark_CheckedChanged;
             // 
             // moviePath
             // 
@@ -67,7 +78,7 @@
             // 
             // movie
             // 
-            movie.Location = new System.Drawing.Point(83, 22);
+            movie.Location = new System.Drawing.Point(90, 22);
             movie.Name = "movie";
             movie.ReadOnly = true;
             movie.Size = new System.Drawing.Size(265, 23);
@@ -85,18 +96,9 @@
             browse.UseVisualStyleBackColor = true;
             browse.Click += browse_Click;
             // 
-            // watermarkLBL
-            // 
-            watermarkLBL.AutoSize = true;
-            watermarkLBL.Location = new System.Drawing.Point(15, 55);
-            watermarkLBL.Name = "watermarkLBL";
-            watermarkLBL.Size = new System.Drawing.Size(65, 15);
-            watermarkLBL.TabIndex = 4;
-            watermarkLBL.Text = "Watermark";
-            // 
             // watermarkPath
             // 
-            watermarkPath.Location = new System.Drawing.Point(83, 51);
+            watermarkPath.Location = new System.Drawing.Point(90, 51);
             watermarkPath.Name = "watermarkPath";
             watermarkPath.ReadOnly = true;
             watermarkPath.Size = new System.Drawing.Size(265, 23);
@@ -180,7 +182,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox pathsGroupBox;
-        private System.Windows.Forms.Label watermarkLBL;
         private System.Windows.Forms.TextBox watermarkPath;
         private System.Windows.Forms.Button browse;
         private System.Windows.Forms.Label moviePath;
@@ -190,5 +191,6 @@
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.Button accept;
         private System.Windows.Forms.CheckBox showProcess;
+        private System.Windows.Forms.CheckBox watermark;
     }
 }

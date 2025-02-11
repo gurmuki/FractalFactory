@@ -115,43 +115,48 @@ namespace FractalFactory
                 { File.Delete(file); }
             }
 
-            int indxA = 0;
-            int indxB = grid.RowCount;
-            if (PMDialog.UseSelectedRange)
+            bool assemble = true;
+            if (PMDialog.ImageFilesOverwrite || (imageFiles.Length < 1))
             {
-                indxA = selectedIndices[0];
-                indxB = selectedIndices[1] + 1;
+                WaitCursorStart();
+
+                int indxA = 0;
+                int indxB = grid.RowCount;
+                if (PMDialog.UseSelectedRange)
+                {
+                    indxA = selectedIndices[0];
+                    indxB = selectedIndices[1] + 1;
+                }
+
+                assemble = false;
+
+                // It is a rare occasion to save movie images in reverse order.
+                // Restoring the option will require additional UI changes.
+                //    MovieBitmapsSave(indxA, indxB, reverseSave.Checked);
+                cancelTokenSource = new CancellationTokenSource();
+                cancelToken = cancelTokenSource.Token;
+                var task = Task.Run(() =>
+                {
+                    MovieBitmapsSave(cancelToken, indxA, indxB, reverse: false);
+                }, cancelToken);
+
+                StopEnable();
+
+                try
+                {
+                    await task;
+                    WaitCursorStop();
+                    assemble = true;
+                }
+                catch (OperationCanceledException)
+                {
+                    Debug.WriteLine($"MovieSave: {nameof(OperationCanceledException)} thrown\n");
+                    WaitCursorStop();
+                }
             }
 
-            WaitCursorStart();
-
-            // It is a rare occasion to save movie images in reverse order.
-            // Restoring the option will require additional UI changes.
-            //    MovieBitmapsSave(indxA, indxB, reverseSave.Checked);
-            cancelTokenSource = new CancellationTokenSource();
-            cancelToken = cancelTokenSource.Token;
-            var task = Task.Run(() =>
-            {
-                MovieBitmapsSave(cancelToken, indxA, indxB, reverse: false);
-            }, cancelToken);
-
-            StopEnable();
-
-            bool stitch = false;
-            try
-            {
-                await task;
-                WaitCursorStop();
-                stitch = true;
-            }
-            catch (OperationCanceledException)
-            {
-                Debug.WriteLine($"MovieSave: {nameof(OperationCanceledException)} thrown\n");
-                WaitCursorStop();
-            }
-
-            if (stitch)
-                MovieStitch(dialog.ProcessShow);
+            if (assemble)
+                MovieAssemble(dialog.ProcessShow);
 
             RunEnable();
 
@@ -160,17 +165,19 @@ namespace FractalFactory
         }
 
         /// <summary>Stiches together the .png files into a .mp4</summary>
-        private void MovieStitch(bool processShow)
+        private void MovieAssemble(bool processShow)
         {
             int showCmdWindow = (processShow ? 1 : 0);  // set to zero to hide the command window
+
+            string watermark = ((workspaceSettings.movieWater == string.Empty) ? "_ignore_" : workspaceSettings.movieWater);
 
             Process process = new Process();
             process.StartInfo.Verb = "runas";
 
-            process.StartInfo.Arguments = string.Format("{0} {1} {2} {3} {4}",
+            process.StartInfo.Arguments = string.Format("\"{0}\" \"{1}\" \"{2}\" {3} {4}",
                         workspaceSettings.movieFolder,
                         workspaceSettings.movieName,
-                        workspaceSettings.movieWater,
+                        watermark,
                         workspaceSettings.movieRate,
                         showCmdWindow
                     );

@@ -32,6 +32,7 @@ namespace FractalFactory
             string folder = (Stringy.IsEmpty(settings.movieFolder) ? settings.defMovFolder : settings.movieFolder);
             movie.Text = Path.Combine(folder, MovieName);
             watermarkPath.Text = settings.movieWater;
+            watermark.Checked = false;
             frameRate.Text = settings.movieRate.ToString();
 
             AcceptEnable();
@@ -41,10 +42,16 @@ namespace FractalFactory
         {
             settings.movieFolder = Path.GetDirectoryName(movie.Text)!;
             settings.movieName = Path.GetFileName(movie.Text);
-            settings.movieWater = watermarkPath.Text;
+            settings.movieWater = (watermark.Checked ? watermarkPath.Text : string.Empty);
             settings.movieRate = Int32.Parse(frameRate.Text);
 
             ProcessShow = showProcess.Checked;
+        }
+
+        private void watermark_CheckedChanged(object sender, EventArgs e)
+        {
+            watermarkPath.Enabled = watermark.Checked;
+            AcceptEnable();
         }
 
         private void movie_Enter(object sender, EventArgs e) { BrowseEnable(movie); }
@@ -113,17 +120,23 @@ namespace FractalFactory
         {
             accept.Enabled = false;
 
+            if (Stringy.IsEmpty(frameRate.Text))
+                return;
+
             if (Stringy.IsEmpty(Path.GetDirectoryName(movie.Text)!))
                 return;
 
             if (Stringy.IsEmpty(Path.GetFileName(movie.Text)))
                 return;
 
-            if (Stringy.IsEmpty(watermarkPath.Text) || (Path.GetExtension(movie.Text).ToLower() != ".mp4"))
+            if (Path.GetExtension(movie.Text).ToLower() != ".mp4")
                 return;
 
-            if (Stringy.IsEmpty(frameRate.Text))
-                return;
+            if (watermark.Checked)
+            {
+                if (Stringy.IsEmpty(watermarkPath.Text))
+                    return;
+            }
 
             accept.Enabled = true;
         }

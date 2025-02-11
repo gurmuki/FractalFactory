@@ -57,7 +57,7 @@ namespace FractalFactory
         {
             if (forNewProject)
             {
-                Text = "New Project Options";
+                Text = "New Project";
                 processingOptions.Visible = false;
                 seedFileOptions.Visible = true;
 
