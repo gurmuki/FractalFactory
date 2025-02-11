@@ -23,4 +23,4 @@ A Windows application for generating 2D fractal images and movies. Simple inputs
 
 <h2>Documentation</h2>
 
-[FractalFactory.pdf](https://github.com/user-attachments/files/18755891/FractalFactory.pdf)
+[FractalFactory.pdf](https://gurmuki.github.io/FractalFactory/FractalFactory.pdf)
