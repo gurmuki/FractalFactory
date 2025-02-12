@@ -279,6 +279,7 @@ namespace FractalFactory
 
         private void ControlsEnable(bool enable)
         {
+            generate.Enabled = enable;
             frames.Enabled = enable;
             domainSettings.Enabled = enable;
             polysGroupBox.Enabled = enable;

@@ -47,6 +47,8 @@ namespace FractalFactory
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
+                ControlsEnable(false);
+
                 int additions = 0;
                 if (dialog.ApplyBelow)
                     additions += Extend(dialog.BelowClassification, dialog.BelowDirectives, dialog.Count, true);
@@ -57,6 +59,8 @@ namespace FractalFactory
                     grid.Rows[referenceRowNumber].Selected = true;
                     additions += Extend(dialog.AboveClassification, dialog.AboveDirectives, dialog.Count, false);
                 }
+
+                ControlsEnable(true);
             }
         }
 
@@ -71,6 +75,8 @@ namespace FractalFactory
             int indx = selectedIndices.Count - 2;
             if (indx < 0)
                 return;
+
+            ControlsEnable(false);
 
             // To avoid adversely affecting the selected indices
             // we must iterate through them in reverse order.
@@ -91,6 +97,8 @@ namespace FractalFactory
 
                 --indx;
             }
+
+            ControlsEnable(true);
 
             smooth.Enabled = false;
             multiFrame.Checked = (additions > 0);

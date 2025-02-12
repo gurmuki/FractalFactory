@@ -992,7 +992,9 @@ namespace FractalFactory
 
         private void PendingUpdate()
         {
-            // generatePending = true;
+            if (isTaskRunning)
+                return;
+
             generate.Enabled = true;
             imagePending = false;
         }
