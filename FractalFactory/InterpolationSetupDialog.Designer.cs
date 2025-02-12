@@ -106,6 +106,7 @@
             ok.TabIndex = 5;
             ok.Text = "Accept";
             ok.UseVisualStyleBackColor = true;
+            ok.Click += ok_Click;
             // 
             // cancel
             // 

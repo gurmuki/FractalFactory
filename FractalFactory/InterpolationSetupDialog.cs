@@ -67,8 +67,8 @@ namespace FractalFactory
             GridStylingInit(numerGrid);
             GridStylingInit(denomGrid);
 
-            numerGrid.Visible = ((Numer0 != null) && (NumerN != null) && !Numer0.EqualTo(NumerN, Precision));
-            denomGrid.Visible = ((Denom0 != null) && (DenomN != null) && !Denom0.EqualTo(DenomN, Precision));
+            numerGrid.Visible = ((Numer0 != null) && (NumerN != null) && !Numer0.EqualTo(NumerN, precision));
+            denomGrid.Visible = ((Denom0 != null) && (DenomN != null) && !Denom0.EqualTo(DenomN, precision));
 
             numerLabel.Visible = numerGrid.Visible;
             denomLabel.Visible = denomGrid.Visible;
