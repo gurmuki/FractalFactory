@@ -236,6 +236,7 @@ namespace FractalFactory
 
             dbWalker = new FractalDBWalker(fractalDb);
 
+            ControlsEnable(false);
             WaitCursorStart();
 
             cancelTokenSource = new CancellationTokenSource();
@@ -252,6 +253,7 @@ namespace FractalFactory
                 await task;
 
                 WaitCursorStop();
+                ControlsEnable(true);
                 RunEnable();
 
                 ProjectMenuItemsEnable();
@@ -260,6 +262,7 @@ namespace FractalFactory
             {
                 Debug.WriteLine($"MultiExecution: {nameof(OperationCanceledException)} thrown\n");
                 WaitCursorStop();
+                ControlsEnable(true);
                 RunEnable();
             }
 
@@ -272,6 +275,15 @@ namespace FractalFactory
                 fractalDb.IsDirty = true;
                 AppTitleUpdate();
             }
+        }
+
+        private void ControlsEnable(bool enable)
+        {
+            frames.Enabled = enable;
+            domainSettings.Enabled = enable;
+            polysGroupBox.Enabled = enable;
+            recordingGroupBox.Enabled = enable;
+            this.Update();
         }
     }
 }

@@ -77,7 +77,7 @@ namespace FractalFactory
             stop = new System.Windows.Forms.Button();
             run = new System.Windows.Forms.Button();
             generate = new System.Windows.Forms.Button();
-            panel1 = new System.Windows.Forms.Panel();
+            frames = new System.Windows.Forms.Panel();
             multiFrame = new System.Windows.Forms.RadioButton();
             singleFrame = new System.Windows.Forms.RadioButton();
             projectMenu = new System.Windows.Forms.MenuStrip();
@@ -116,7 +116,7 @@ namespace FractalFactory
             domainSettings.SuspendLayout();
             polysGroupBox.SuspendLayout();
             exeGroupBox.SuspendLayout();
-            panel1.SuspendLayout();
+            frames.SuspendLayout();
             projectMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grid).BeginInit();
             picturePanel.SuspendLayout();
@@ -473,7 +473,7 @@ namespace FractalFactory
             exeGroupBox.Controls.Add(stop);
             exeGroupBox.Controls.Add(run);
             exeGroupBox.Controls.Add(generate);
-            exeGroupBox.Controls.Add(panel1);
+            exeGroupBox.Controls.Add(frames);
             exeGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             exeGroupBox.Location = new System.Drawing.Point(12, 44);
             exeGroupBox.Name = "exeGroupBox";
@@ -515,14 +515,14 @@ namespace FractalFactory
             generate.UseVisualStyleBackColor = true;
             generate.Click += generate_Click;
             // 
-            // panel1
+            // frames
             // 
-            panel1.Controls.Add(multiFrame);
-            panel1.Controls.Add(singleFrame);
-            panel1.Location = new System.Drawing.Point(16, 15);
-            panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(118, 54);
-            panel1.TabIndex = 0;
+            frames.Controls.Add(multiFrame);
+            frames.Controls.Add(singleFrame);
+            frames.Location = new System.Drawing.Point(16, 15);
+            frames.Name = "frames";
+            frames.Size = new System.Drawing.Size(118, 54);
+            frames.TabIndex = 0;
             // 
             // multiFrame
             // 
@@ -812,8 +812,8 @@ namespace FractalFactory
             polysGroupBox.ResumeLayout(false);
             polysGroupBox.PerformLayout();
             exeGroupBox.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            frames.ResumeLayout(false);
+            frames.PerformLayout();
             projectMenu.ResumeLayout(false);
             projectMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)grid).EndInit();
@@ -852,7 +852,7 @@ namespace FractalFactory
         private System.Windows.Forms.Button run;
         private System.Windows.Forms.Button generate;
         private CustomControls.CustomDbGridCtrl grid;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel frames;
         private System.Windows.Forms.Button record;
         private System.Windows.Forms.Button smooth;
         private System.Windows.Forms.Button interpolate;
