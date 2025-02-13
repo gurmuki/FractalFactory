@@ -40,6 +40,7 @@ namespace FractalFactory
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FractalFactory));
             controlPanel = new System.Windows.Forms.Panel();
             progressPanel = new System.Windows.Forms.Panel();
             progressBar = new System.Windows.Forms.ProgressBar();
@@ -793,6 +794,7 @@ namespace FractalFactory
             Controls.Add(picturePanel);
             Controls.Add(controlPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
             MainMenuStrip = projectMenu;
             MaximizeBox = false;
