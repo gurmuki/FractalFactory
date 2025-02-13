@@ -20,7 +20,7 @@ namespace FractalFactory
 
         private void ValueChanged(object sender, EventArgs e)
         {
-            ok.Enabled = (projects.Text.Length > 0);
+            accept.Enabled = (projects.Text.Length > 0);
         }
 
         public string ProjectName
@@ -33,7 +33,7 @@ namespace FractalFactory
 
         private void projectSaveAsDialog_Load(object sender, EventArgs e)
         {
-            OkEnable();
+            AcceptEnable();
         }
 
         private void projectSaveAsDialog_FormClosing(object sender, FormClosingEventArgs e)
@@ -41,7 +41,7 @@ namespace FractalFactory
             e.Cancel = (this.DialogResult == DialogResult.No);
         }
 
-        private void ok_Click(object sender, EventArgs e)
+        private void accept_Click(object sender, EventArgs e)
         {
             if (projects.Contains(projects.Text))
             {
@@ -56,9 +56,9 @@ namespace FractalFactory
             }
         }
 
-        private void OkEnable()
+        private void AcceptEnable()
         {
-            ok.Enabled = (projects.Text.Length > 0);
+            accept.Enabled = (projects.Text.Length > 0);
         }
 
         private void ProjectSaveAsDialog_Click(object sender, EventArgs e)

@@ -24,7 +24,7 @@ namespace FractalFactory
             toProjects.ReadOnly = false;
 
             FromProjectName = string.Empty;
-            OkEnable();
+            AcceptEnable();
         }
 
         public string ActiveProjectName { get; set; } = string.Empty;
@@ -43,7 +43,7 @@ namespace FractalFactory
 
         private void RenameProjectDialog_Load(object sender, EventArgs e)
         {
-            ok.Enabled = false;
+            accept.Enabled = false;
         }
 
         private void ProjectRenameDialog_FormClosing(object sender, FormClosingEventArgs e)
@@ -55,7 +55,7 @@ namespace FractalFactory
             }
         }
 
-        private void ok_Click(object sender, EventArgs e)
+        private void accept_Click(object sender, EventArgs e)
         {
             if (fromProjects.Contains(fromProjects.Text))
             {
@@ -76,17 +76,17 @@ namespace FractalFactory
 
         private void FromValueChanged(object sender, EventArgs e)
         {
-            OkEnable();
+            AcceptEnable();
         }
 
         private void ToValueChanged(object sender, EventArgs e)
         {
-            OkEnable();
+            AcceptEnable();
         }
 
-        private void OkEnable()
+        private void AcceptEnable()
         {
-            ok.Enabled = ((fromProjects.Text.Length > 0) && (toProjects.Text != fromProjects.Text));
+            accept.Enabled = ((fromProjects.Text.Length > 0) && (toProjects.Text != fromProjects.Text));
         }
 
         private void ProjectRenameDialog_Click(object sender, EventArgs e)

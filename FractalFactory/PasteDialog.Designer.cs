@@ -31,8 +31,8 @@
             groupBox = new System.Windows.Forms.GroupBox();
             below = new System.Windows.Forms.RadioButton();
             above = new System.Windows.Forms.RadioButton();
-            okBTN = new System.Windows.Forms.Button();
-            cancelBTN = new System.Windows.Forms.Button();
+            accept = new System.Windows.Forms.Button();
+            cancel = new System.Windows.Forms.Button();
             groupBox.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,35 +69,35 @@
             above.Text = "Above";
             above.UseVisualStyleBackColor = true;
             // 
-            // okBTN
+            // accept
             // 
-            okBTN.DialogResult = System.Windows.Forms.DialogResult.OK;
-            okBTN.Location = new System.Drawing.Point(28, 91);
-            okBTN.Name = "okBTN";
-            okBTN.Size = new System.Drawing.Size(75, 23);
-            okBTN.TabIndex = 1;
-            okBTN.Text = "OK";
-            okBTN.UseVisualStyleBackColor = true;
+            accept.DialogResult = System.Windows.Forms.DialogResult.OK;
+            accept.Location = new System.Drawing.Point(109, 91);
+            accept.Name = "accept";
+            accept.Size = new System.Drawing.Size(75, 23);
+            accept.TabIndex = 1;
+            accept.Text = "Accept";
+            accept.UseVisualStyleBackColor = true;
             // 
-            // cancelBTN
+            // cancel
             // 
-            cancelBTN.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            cancelBTN.Location = new System.Drawing.Point(109, 91);
-            cancelBTN.Name = "cancelBTN";
-            cancelBTN.Size = new System.Drawing.Size(75, 23);
-            cancelBTN.TabIndex = 2;
-            cancelBTN.Text = "Cancel";
-            cancelBTN.UseVisualStyleBackColor = true;
+            cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            cancel.Location = new System.Drawing.Point(28, 91);
+            cancel.Name = "cancel";
+            cancel.Size = new System.Drawing.Size(75, 23);
+            cancel.TabIndex = 2;
+            cancel.Text = "Cancel";
+            cancel.UseVisualStyleBackColor = true;
             // 
             // PasteDialog
             // 
-            AcceptButton = okBTN;
+            AcceptButton = accept;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            CancelButton = cancelBTN;
+            CancelButton = cancel;
             ClientSize = new System.Drawing.Size(209, 126);
-            Controls.Add(cancelBTN);
-            Controls.Add(okBTN);
+            Controls.Add(cancel);
+            Controls.Add(accept);
             Controls.Add(groupBox);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             Name = "PasteDialog";
@@ -115,7 +115,7 @@
         private System.Windows.Forms.GroupBox groupBox;
         private System.Windows.Forms.RadioButton below;
         private System.Windows.Forms.RadioButton above;
-        private System.Windows.Forms.Button okBTN;
-        private System.Windows.Forms.Button cancelBTN;
+        private System.Windows.Forms.Button accept;
+        private System.Windows.Forms.Button cancel;
     }
 }

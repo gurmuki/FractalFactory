@@ -138,7 +138,7 @@ namespace FractalFactory
             }
         }
 
-        private void ok_Click(object sender, EventArgs e)
+        private void accept_Click(object sender, EventArgs e)
         {
             NumerDirectives.Clear();
             DenomDirectives.Clear();

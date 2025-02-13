@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             action = new System.Windows.Forms.ComboBox();
-            ok = new System.Windows.Forms.Button();
+            accept = new System.Windows.Forms.Button();
             cancel = new System.Windows.Forms.Button();
             deltaGrid = new System.Windows.Forms.DataGridView();
             polyGrid = new System.Windows.Forms.DataGridView();
@@ -51,17 +51,17 @@
             action.TabIndex = 1;
             action.SelectedIndexChanged += action_SelectedIndexChanged;
             // 
-            // ok
+            // accept
             // 
-            ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            ok.Location = new System.Drawing.Point(622, 310);
-            ok.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            ok.Name = "ok";
-            ok.Size = new System.Drawing.Size(88, 27);
-            ok.TabIndex = 5;
-            ok.Text = "Accept";
-            ok.UseVisualStyleBackColor = true;
-            ok.Click += ok_Click;
+            accept.DialogResult = System.Windows.Forms.DialogResult.OK;
+            accept.Location = new System.Drawing.Point(622, 310);
+            accept.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            accept.Name = "accept";
+            accept.Size = new System.Drawing.Size(88, 27);
+            accept.TabIndex = 5;
+            accept.Text = "Accept";
+            accept.UseVisualStyleBackColor = true;
+            accept.Click += accept_Click;
             // 
             // cancel
             // 
@@ -135,7 +135,7 @@
             // 
             // ExtendSetupDialog
             // 
-            AcceptButton = ok;
+            AcceptButton = accept;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = cancel;
@@ -145,7 +145,7 @@
             Controls.Add(deltaGrid);
             Controls.Add(polyGrid);
             Controls.Add(count);
-            Controls.Add(ok);
+            Controls.Add(accept);
             Controls.Add(cancel);
             Controls.Add(action);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -162,7 +162,7 @@
 
         #endregion
         private System.Windows.Forms.ComboBox action;
-        private System.Windows.Forms.Button ok;
+        private System.Windows.Forms.Button accept;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.DataGridView deltaGrid;
         private System.Windows.Forms.DataGridView polyGrid;

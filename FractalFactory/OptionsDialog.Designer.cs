@@ -62,7 +62,7 @@
             serialExecution = new System.Windows.Forms.RadioButton();
             calibrate = new System.Windows.Forms.CheckBox();
             cancel = new System.Windows.Forms.Button();
-            ok = new System.Windows.Forms.Button();
+            accept = new System.Windows.Forms.Button();
             defaultFolders.SuspendLayout();
             seedFileOptions.SuspendLayout();
             processingOptions.SuspendLayout();
@@ -434,26 +434,26 @@
             cancel.Text = "Cancel";
             cancel.UseVisualStyleBackColor = true;
             // 
-            // ok
+            // accept
             // 
-            ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            ok.Location = new System.Drawing.Point(400, 522);
-            ok.Name = "ok";
-            ok.Size = new System.Drawing.Size(75, 27);
-            ok.TabIndex = 27;
-            ok.Text = "Accept";
-            ok.UseVisualStyleBackColor = true;
-            ok.Click += ok_Click;
+            accept.DialogResult = System.Windows.Forms.DialogResult.OK;
+            accept.Location = new System.Drawing.Point(400, 522);
+            accept.Name = "accept";
+            accept.Size = new System.Drawing.Size(75, 27);
+            accept.TabIndex = 27;
+            accept.Text = "Accept";
+            accept.UseVisualStyleBackColor = true;
+            accept.Click += accept_Click;
             // 
             // OptionsDialog
             // 
-            AcceptButton = ok;
+            AcceptButton = accept;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = cancel;
             ClientSize = new System.Drawing.Size(515, 558);
             Controls.Add(calibrate);
-            Controls.Add(ok);
+            Controls.Add(accept);
             Controls.Add(cancel);
             Controls.Add(seedFileOptions);
             Controls.Add(processingOptions);
@@ -508,7 +508,7 @@
         private System.Windows.Forms.CheckBox previewMode;
         private System.Windows.Forms.CheckBox calibrate;
         private System.Windows.Forms.Button cancel;
-        private System.Windows.Forms.Button ok;
+        private System.Windows.Forms.Button accept;
         private System.Windows.Forms.GroupBox externals;
         private System.Windows.Forms.Button externalsBrowse;
         private System.Windows.Forms.Label imageViewerLBL;

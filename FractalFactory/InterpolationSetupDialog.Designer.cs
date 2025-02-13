@@ -33,7 +33,7 @@
             numerLabel = new System.Windows.Forms.Label();
             denomLabel = new System.Windows.Forms.Label();
             buttonPanel = new System.Windows.Forms.Panel();
-            ok = new System.Windows.Forms.Button();
+            accept = new System.Windows.Forms.Button();
             cancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)numerGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)denomGrid).BeginInit();
@@ -89,24 +89,24 @@
             // 
             // buttonPanel
             // 
-            buttonPanel.Controls.Add(ok);
+            buttonPanel.Controls.Add(accept);
             buttonPanel.Controls.Add(cancel);
             buttonPanel.Location = new System.Drawing.Point(148, 318);
             buttonPanel.Name = "buttonPanel";
             buttonPanel.Size = new System.Drawing.Size(186, 34);
             buttonPanel.TabIndex = 6;
             // 
-            // ok
+            // accept
             // 
-            ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            ok.Location = new System.Drawing.Point(97, 4);
-            ok.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            ok.Name = "ok";
-            ok.Size = new System.Drawing.Size(88, 27);
-            ok.TabIndex = 5;
-            ok.Text = "Accept";
-            ok.UseVisualStyleBackColor = true;
-            ok.Click += ok_Click;
+            accept.DialogResult = System.Windows.Forms.DialogResult.OK;
+            accept.Location = new System.Drawing.Point(97, 4);
+            accept.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            accept.Name = "accept";
+            accept.Size = new System.Drawing.Size(88, 27);
+            accept.TabIndex = 5;
+            accept.Text = "Accept";
+            accept.UseVisualStyleBackColor = true;
+            accept.Click += accept_Click;
             // 
             // cancel
             // 
@@ -121,7 +121,7 @@
             // 
             // InterpolationSetupDialog
             // 
-            AcceptButton = ok;
+            AcceptButton = accept;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = cancel;
@@ -151,7 +151,7 @@
         private System.Windows.Forms.Label numerLabel;
         private System.Windows.Forms.Label denomLabel;
         private System.Windows.Forms.Panel buttonPanel;
-        private System.Windows.Forms.Button ok;
+        private System.Windows.Forms.Button accept;
         private System.Windows.Forms.Button cancel;
     }
 }

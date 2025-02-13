@@ -153,7 +153,7 @@ namespace FractalFactory
             count.Text = Count.ToString();
         }
 
-        private void ok_Click(object sender, EventArgs e)
+        private void accept_Click(object sender, EventArgs e)
         {
             string actionStr = action.Text;
 
@@ -183,20 +183,20 @@ namespace FractalFactory
 
         private void action_SelectedIndexChanged(object sender, EventArgs e)
         {
-            OkButtonEnable();
+            AcceptEnable();
         }
 
         private void delta_TextChanged(object sender, EventArgs e)
         {
-            OkButtonEnable();
+            AcceptEnable();
         }
 
         private void count_TextChanged(object sender, EventArgs e)
         {
-            OkButtonEnable();
+            AcceptEnable();
         }
 
-        private void OkButtonEnable()
+        private void AcceptEnable()
         {
             bool enable = false;
 
@@ -204,7 +204,7 @@ namespace FractalFactory
             if (Int32.TryParse(count.Text, out itmp) && (itmp > 0))
                 enable = (action.Text != NO_ACTION);
 
-            ok.Enabled = enable;
+            accept.Enabled = enable;
         }
 
         private void EquationRowAdd(PolyTerms eq, bool disable)

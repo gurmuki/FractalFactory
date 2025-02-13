@@ -66,7 +66,7 @@ namespace FractalFactory
 
                 seedFileOptions.Location = new Point(seedFileOptions.Left, defaultFolders.Bottom);
 
-                ok.Top = seedFileOptions.Bottom + 10;
+                accept.Top = seedFileOptions.Bottom + 10;
             }
             else
             {
@@ -79,7 +79,7 @@ namespace FractalFactory
 
                 processingOptions.Top = defaultFolders.Bottom;
 
-                ok.Top = processingOptions.Bottom + 10;
+                accept.Top = processingOptions.Bottom + 10;
 
                 string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
                 string exeFolder = Path.GetDirectoryName(exePath)!;
@@ -91,13 +91,13 @@ namespace FractalFactory
 
 #if DEBUG
             calibrate.Visible = true;
-            calibrate.Top = ok.Top;
+            calibrate.Top = accept.Top;
 #else
             calibrate.Visible = false;
 #endif
 
-            cancel.Top = ok.Top;
-            this.Height = ok.Bottom + ok.Height + 25;
+            cancel.Top = accept.Top;
+            this.Height = accept.Bottom + accept.Height + 25;
 
             MethodDropdownInit();
 
@@ -130,7 +130,7 @@ namespace FractalFactory
             externalsBrowse.Enabled = false;
         }
 
-        private void ok_Click(object sender, EventArgs e)
+        private void accept_Click(object sender, EventArgs e)
         {
             settings.DatabaseFolder(database.Text);
             settings.defProjFolder = defProjFolder.Text;

@@ -38,7 +38,7 @@ namespace FractalFactory
         private void InitializeComponent()
         {
             projects = new CustomControls.CComboBox();
-            ok = new System.Windows.Forms.Button();
+            accept = new System.Windows.Forms.Button();
             cancel = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
@@ -55,18 +55,18 @@ namespace FractalFactory
             projects.TabIndex = 1;
             projects.ValueChanged += ValueChanged;
             // 
-            // ok
+            // accept
             // 
-            ok.Anchor = System.Windows.Forms.AnchorStyles.None;
-            ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            ok.Location = new System.Drawing.Point(284, 122);
-            ok.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            ok.Name = "ok";
-            ok.Size = new System.Drawing.Size(84, 27);
-            ok.TabIndex = 2;
-            ok.Text = "Accept";
-            ok.UseVisualStyleBackColor = true;
-            ok.Click += ok_Click;
+            accept.Anchor = System.Windows.Forms.AnchorStyles.None;
+            accept.DialogResult = System.Windows.Forms.DialogResult.OK;
+            accept.Location = new System.Drawing.Point(284, 122);
+            accept.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            accept.Name = "accept";
+            accept.Size = new System.Drawing.Size(84, 27);
+            accept.TabIndex = 2;
+            accept.Text = "Accept";
+            accept.UseVisualStyleBackColor = true;
+            accept.Click += accept_Click;
             // 
             // cancel
             // 
@@ -82,13 +82,13 @@ namespace FractalFactory
             // 
             // ProjectSaveAsDialog
             // 
-            AcceptButton = ok;
+            AcceptButton = accept;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = cancel;
             ClientSize = new System.Drawing.Size(384, 161);
             Controls.Add(projects);
-            Controls.Add(ok);
+            Controls.Add(accept);
             Controls.Add(cancel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -104,7 +104,7 @@ namespace FractalFactory
         #endregion
 
         private CustomControls.CComboBox projects;
-        private System.Windows.Forms.Button ok;
+        private System.Windows.Forms.Button accept;
         private System.Windows.Forms.Button cancel;
     }
 }

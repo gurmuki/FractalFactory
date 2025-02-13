@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ok = new System.Windows.Forms.Button();
+            accept = new System.Windows.Forms.Button();
             cancel = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             project = new System.Windows.Forms.ComboBox();
             SuspendLayout();
             // 
-            // ok
+            // accept
             // 
-            ok.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            ok.Location = new System.Drawing.Point(224, 52);
-            ok.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            ok.Name = "ok";
-            ok.Size = new System.Drawing.Size(88, 27);
-            ok.TabIndex = 18;
-            ok.Text = "Delete";
-            ok.UseVisualStyleBackColor = true;
-            ok.Click += ok_Click;
+            accept.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            accept.DialogResult = System.Windows.Forms.DialogResult.OK;
+            accept.Location = new System.Drawing.Point(224, 52);
+            accept.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            accept.Name = "accept";
+            accept.Size = new System.Drawing.Size(88, 27);
+            accept.TabIndex = 18;
+            accept.Text = "Delete";
+            accept.UseVisualStyleBackColor = true;
+            accept.Click += accept_Click;
             // 
             // cancel
             // 
@@ -82,14 +82,14 @@
             // 
             // ProjectDeleteDialog
             // 
-            AcceptButton = ok;
+            AcceptButton = accept;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = cancel;
             ClientSize = new System.Drawing.Size(334, 92);
             Controls.Add(label1);
             Controls.Add(project);
-            Controls.Add(ok);
+            Controls.Add(accept);
             Controls.Add(cancel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -104,7 +104,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button ok;
+        private System.Windows.Forms.Button accept;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox project;

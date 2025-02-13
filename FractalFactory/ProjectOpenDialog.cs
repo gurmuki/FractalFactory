@@ -22,11 +22,11 @@ namespace FractalFactory
             if (ProjectNames == null)
                 return;
 
-            ok.Enabled = false;
+            accept.Enabled = false;
             project.Items.AddRange(ProjectNames.ToArray());
         }
 
-        private void ok_Click(object sender, EventArgs e)
+        private void accept_Click(object sender, EventArgs e)
         {
             if (project.SelectedItem == null)
                 return;
@@ -36,7 +36,7 @@ namespace FractalFactory
 
         private void project_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ok.Enabled = true;
+            accept.Enabled = true;
         }
     }
 }
