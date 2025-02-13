@@ -24,3 +24,10 @@ A Windows application for generating 2D fractal images and movies. Simple inputs
 <h2>Documentation</h2>
 
 [FractalFactory.pdf](https://gurmuki.github.io/FractalFactory/FractalFactory.pdf)
+
+<h2>Software/References</h2>
+
+OpenGL Control https://github.com/opentk/GLControl
+<p></p>
+Math Using Complex Numbers https://www.codeproject.com/Articles/38514/The-beauty-of-fractals-A-simple-fractal-rendering
+<p></p>
