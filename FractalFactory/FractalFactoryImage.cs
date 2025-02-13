@@ -53,6 +53,8 @@ namespace FractalFactory
             dialog.Title = "Save Photograph";
             dialog.InitialDirectory = folder;
             dialog.FileName = ImageNameFormat();
+            dialog.DefaultExt = "png";
+            dialog.AddExtension = true;
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -203,6 +205,8 @@ namespace FractalFactory
             dialog.Filter = "Image|*.png";
             dialog.Title = "Save an Image File";
             dialog.FileName = ImageNameFormat();
+            dialog.DefaultExt = "png";
+            dialog.AddExtension = true;
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {

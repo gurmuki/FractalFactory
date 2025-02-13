@@ -342,6 +342,8 @@ namespace FractalFactory
             dialog.InitialDirectory = workspaceSettings.ProjectFolder();
             dialog.FileName = workspaceSettings.ProjectFilename();
             dialog.Filter = "txt files (*.txt)|*.txt";
+            dialog.DefaultExt = "txt";
+            dialog.AddExtension = true;
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {

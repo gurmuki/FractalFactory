@@ -95,6 +95,8 @@ namespace FractalFactory
             dialog.InitialDirectory = movie.Text;
             dialog.FileName = string.Empty;
             dialog.Filter = "mp4 files (*.mp4)|*.mp4";
+            dialog.DefaultExt = "mp4";
+            dialog.AddExtension = true;
 
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;

@@ -26,6 +26,7 @@ namespace FractalFactory
             else if (workspaceSettings.method == OptionsDialog.NEWTON2)
                 run.Enabled = (IsDomainDefined() && NonEmpty(numerPoly) && NonEmpty(denomPoly));
 
+            generate.Enabled = false;
             stop.Enabled = false;
         }
 
